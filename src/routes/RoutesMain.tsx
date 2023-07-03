@@ -4,6 +4,8 @@ import { Home } from "../pages/Home";
 import { SearchPage } from "../pages/SearchPage";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
+import { ProtectedRoute } from "../components/ProtectedRoute";
+import { Dashboard } from "../pages/Dashboard";
 
 export function RoutesMain() {
     return(
@@ -13,7 +15,9 @@ export function RoutesMain() {
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
 
-            <Route path="/register" element={<Register/>} />
+            <Route path="/dashboard" element={<ProtectedRoute/>} >
+                <Route index element={<Dashboard/>} />
+            </Route>
         </Routes>
     )
 }
