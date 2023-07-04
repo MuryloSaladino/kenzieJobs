@@ -1,3 +1,4 @@
+import { RoutesMain } from "./routes/RoutesMain";
 import { GlobalStyles } from "./styles/globalStyles";
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      oioi
+      <RoutesMain/>
     </>
   )
 }
