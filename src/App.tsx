@@ -6,8 +6,8 @@ function App() {
 
   return (
     <>
-      <GlobalStyles />
       <ResetStyles />
+      <GlobalStyles />
       <RoutesMain/>
     </>
   )
