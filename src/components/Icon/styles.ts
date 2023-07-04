@@ -6,5 +6,5 @@ interface StyledIconProps{
 
 export const StyledIcon = styled.i<StyledIconProps>`
     color: ${({color}) => color};
-    font-size: 1.5rem;
+    transition: 0.3s;
 `
