@@ -9,6 +9,8 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body{
+        min-height: 100vh;
+        position: relative;
         font-family: 'Montserrat', sans-serif;
     }
 `

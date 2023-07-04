@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const StyledFooter = styled.footer`
     width: 100%;
     background-color: var(--color-black);
+    position: absolute;
+    bottom: 0;
 
     div{
         height: 103px;

@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const StyledHeader = styled.header`
     width: 100%;
     background-color: var(--color-white);
+
+    position: absolute;
+    top: 0;
 `
 
 export const StyledNav = styled.nav`
