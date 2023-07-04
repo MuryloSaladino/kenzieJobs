@@ -9,7 +9,7 @@ import { Icon } from "../Icon";
 
 export function Navbar() {
 
-    const [menuColor, setMenuColor] = useState("var(--color-black)")
+    const [menuColor, setMenuColor] = useState<string>("var(--color-black)")
 
     useEffect(() => {
         function checkLocation() {
