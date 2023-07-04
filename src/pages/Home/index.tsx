@@ -1,9 +1,9 @@
-import { Footer } from "../../components/Footer";
+import { Icon } from "../../components/Icon";
 
 export function Home() {
     return(
         <>
-            <Footer/>
+            <Icon color="var(--color-black)" iconName="search" />
         </>
     )
 }
