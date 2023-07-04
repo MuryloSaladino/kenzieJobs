@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
-import { Button } from "../../../../components/Button";
+import { StyledDashboardMain } from "../../styles";
 import { DashboardNavbar } from "../../../../components/DashboardNavbar";
+import { StyledJobsDiv } from "./styles";
+import { JobList } from "./JobsList";
+
+import { Button } from "../../../../components/Button";
+import { Link } from "react-router-dom";
 import { Icon } from "../../../../components/Icon";
 import { Title1 } from "../../../../styles/typography";
-import { StyledDashboardMain } from "../../styles";
-import { StyledJobsDiv } from "./styles";
 
 export function Jobs() {
     return(
@@ -18,7 +20,8 @@ export function Jobs() {
                         <Button buttonStyle="solid"><Icon iconName="add_circle"/>Criar vaga</Button>
                     </Link>
                 </StyledJobsDiv>
-                
+
+                <JobList/>
 
             </StyledDashboardMain>
         </>
