@@ -42,6 +42,7 @@ export const Label = styled.label<ITypographyProps>`
 `
 
 export const Paragraph = styled.p<ITypographyProps>`
+    font-family: 'Inter', sans-serif;
     font-size: 1.125rem;
     font-weight: ${({bold}) => bold ? '700' : '400'};
     color: ${({color}) => color ? color : "var(--color-black)"};
