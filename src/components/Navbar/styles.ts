@@ -27,6 +27,8 @@ export const StyledNav = styled.nav`
 
     @media(max-width: 580px) {
 
+        height: 119px;
+        padding-bottom: 28px;
         justify-content: center;
     
         img{
