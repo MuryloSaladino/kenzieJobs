@@ -6,8 +6,8 @@ export const StyledFooter = styled.footer`
 
     div{
         height: 103px;
-        width: 95%;
-        max-width: 1200px;
+        width: 98%;
+        max-width: 1328px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;

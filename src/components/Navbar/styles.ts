@@ -7,8 +7,8 @@ export const StyledHeader = styled.header`
 
 export const StyledNav = styled.nav`
     height: 90px;
-    width: 95%;
-    max-width: 1296px;
+    width: 98%;
+    max-width: 1328px;
 
     margin: 0 auto;
 
