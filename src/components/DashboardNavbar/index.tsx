@@ -22,8 +22,13 @@ export function DashboardNavbar() {
     return(
         <>
             <StyledDashboardNavbarDiv>
-                <MenuText color={pageSelected === "applies" ? "var(--color-blue)" : "var(--color-black)"} ><Link to="/dashboard/applies">Minhas vagas</Link></MenuText>
-                <MenuText color={pageSelected === "jobs" ? "var(--color-blue)" : "var(--color-black)"} ><Link to="/dashboard/jobs">Minhas candidaturas</Link></MenuText>
+                <Link to="/dashboard/applies">
+                    <MenuText color={pageSelected === "applies" ? "var(--color-blue)" : "var(--color-black)"}>Minhas vagas</MenuText>
+                </Link>
+
+                <Link to="/dashboard/jobs">
+                    <MenuText color={pageSelected === "applies" ? "var(--color-blue)" : "var(--color-black)"}>Minhas candidaturas</MenuText>
+                </Link>
             </StyledDashboardNavbarDiv>
         </>
     )
