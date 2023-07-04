@@ -1,7 +1,12 @@
+import { DashboardNavbar } from "../../../../components/DashboardNavbar";
+import { StyledDashboardMain } from "../../styles";
+
 export function Applies() {
     return(
         <>
-            Aqui é a applies
+             <StyledDashboardMain>
+                <DashboardNavbar/>
+            </StyledDashboardMain>
         </>
     )
 }

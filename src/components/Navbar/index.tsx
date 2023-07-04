@@ -27,9 +27,9 @@ export function Navbar() {
 
                 <img src={logo} alt="Logo" />
 
-                <MenuText color={menuColor} ><Link to={"/login"}>acesso empresa</Link></MenuText>
-                <Button buttonStyle="solid"><Link to={"/search-jobs"}>Confira nossas vagas</Link></Button>
-                <Icon iconName="search" color="var(--color-blue)" />
+                <MenuText color={menuColor}><Link to={"/login"}>acesso empresa</Link></MenuText>
+                <Link to={"/search-jobs"}><Button buttonStyle="solid">Confira nossas vagas</Button></Link>
+                <Icon iconName="search" color="var(--color-blue)"/>
 
             </StyledNav>
         </StyledHeader>
