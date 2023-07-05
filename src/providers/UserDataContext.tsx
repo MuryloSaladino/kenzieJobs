@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { kenzieJobs } from "../service/api";
 import { toast } from "react-toastify"
 import { AxiosResponse } from "axios";
@@ -43,6 +43,7 @@ export function UserDataProvider({children}: IUserDataProviderProps) {
     const [applies, setApplies] = useState<IApplies[]>([])
     const [currentJob, setCurrentJob] = useState<IJobs | null>(null)
 
+
     async function updateJobs() {
         const token = localStorage.getItem("@TOKEN")
         const companyId = localStorage.getItem("@USERID")
@@ -52,7 +53,8 @@ export function UserDataProvider({children}: IUserDataProviderProps) {
             }
         }
         try {
-            const {data}:AxiosResponse<IJobs[]> = await kenzieJobs.get(`users/${companyId}/jobs`, options)
+            const {data}:AxiosResponse<IJobs[]> = await kenzieJobs.get(`/users/${companyId}/jobs`, options)
+            console.log(data)
             setJobs(data)
         } catch (error) {
             console.error(error)
@@ -61,15 +63,28 @@ export function UserDataProvider({children}: IUserDataProviderProps) {
     }
 
     async function updateApplies() {
+        const token = localStorage.getItem("@TOKEN")
         const companyId = localStorage.getItem("@USERID")
+        const options = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
         try {
-            const {data}:AxiosResponse<IApplies[]> = await kenzieJobs.get(`users/${companyId}/jobs`)
+            const {data}:AxiosResponse<IApplies[]> = await kenzieJobs.get(`/users/${companyId}/applications`, options)
             setApplies(data)
         } catch (error) {
             console.error(error)
             toast.error("Oops! Parece que algo deu errado.")
         }
     }
+
+
+    useEffect(() => {
+        updateJobs()
+        updateApplies()
+    }, [])
+    
 
     return(
         <UserDataContext.Provider value={{jobs, applies, updateJobs, updateApplies, currentJob, setCurrentJob}}>

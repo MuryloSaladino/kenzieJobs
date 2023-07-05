@@ -8,9 +8,7 @@ import { v4 as uuidv4 } from "uuid"
 
 export function JobList() {
 
-    const { jobs, updateJobs } = useContext(UserDataContext)
-
-    //updateJobs()
+    const { jobs } = useContext(UserDataContext)
 
     return(
         <StyledJobUl>
