@@ -1,12 +1,11 @@
-import { StyledCreateJobForm } from "./styles";
+import { StyledEditJobForm } from "./styles";
 import { Input } from "../../Input";
-import { TextArea } from "../../Textarea";
 import { Button } from "../../Button";
 import { Icon } from "../../Icon";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { TCreateJobFormValues, createJobSchema } from "./createJobSchema";
+import { TEditJobFormValues, editJobSchema } from "./editJobSchema";
 import { kenzieJobs } from "../../../service/api";
 import { toast } from "react-toastify"
 import { useContext } from "react";
@@ -16,11 +15,11 @@ export function CreateJobForm() {
 
     const { updateJobs } = useContext(UserDataContext)
 
-    const {register, handleSubmit, formState:{errors}, reset} = useForm<TCreateJobFormValues>({
-        resolver: zodResolver(createJobSchema)
+    const {register, handleSubmit, formState:{errors}, reset} = useForm<TEditJobFormValues>({
+        resolver: zodResolver(editJobSchema)
     })
 
-    const createJobForm:SubmitHandler<TCreateJobFormValues> = async (formData) => {
+    const createJobForm:SubmitHandler<TEditJobFormValues> = async (formData) => {
         const newJob = {userId: localStorage.getItem("@USERID"), ...formData}
 
         try {
@@ -39,11 +38,11 @@ export function CreateJobForm() {
     }
 
     return(
-        <StyledCreateJobForm onSubmit={handleSubmit(createJobForm)}>
+        <StyledEditJobForm onSubmit={handleSubmit(createJobForm)}>
             <Input {...register("position")} placeholder={"Cargo"} error={errors.position} />
             <Input {...register("sallary")} placeholder={"Salário (opcional)"} />
-            <TextArea {...register("description")} placeholder={"Descrição"} error={errors.description} />
+            <Input {...register("description")} placeholder={"Descrição"} error={errors.description} />
             <Button buttonStyle="solid"><Icon iconName="add_circle"/>Criar Vaga</Button>
-        </StyledCreateJobForm>
+        </StyledEditJobForm>
     )
 }
