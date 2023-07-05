@@ -8,7 +8,7 @@ export function Register() {
         <>  
             <Navbar/>
             <main>
-                <span>seta</span><Link to={"login"}>voltar</Link>
+                <span>seta</span><Link to={"/login"}>voltar</Link>
                 <section>
                     <RegisterForm />
                 </section>
