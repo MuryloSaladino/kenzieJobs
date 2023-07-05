@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import { kenzieJobs } from "../service/api";
 import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
