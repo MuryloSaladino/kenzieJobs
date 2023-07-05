@@ -8,10 +8,12 @@ export function EditJobs() {
 
     console.log(currentJob)
 
+    
+
     return(
         <>
             <StyledEditMain>
-                <li>teste</li>
+                
             </StyledEditMain>
         </>
     )

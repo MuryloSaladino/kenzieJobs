@@ -12,6 +12,8 @@ export const StyledInput = styled.input`
     font-size: 1rem;
     font-weight: 700;
 
+    box-sizing: border-box;
+
     ::placeholder{
         color: rgba(16, 17, 26, 0.50);
         font-size: 1rem;
