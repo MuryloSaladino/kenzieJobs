@@ -1,12 +1,12 @@
 import { StyledJobLi } from "./styles";
-import { Icon } from "../../../../../../components/Icon";
-import { Title3 } from "../../../../../../styles/typography";
+import { Icon } from "../../../../../components/Icon";
+import { Title3 } from "../../../../../styles/typography";
 
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { UserDataContext } from "../../../../../../providers/UserDataContext";
+import { UserDataContext } from "../../../../../providers/UserDataContext";
 
-import { kenzieJobs } from "../../../../../../service/api";
+import { kenzieJobs } from "../../../../../service/api";
 import { toast } from "react-toastify"
 
 
@@ -26,9 +26,10 @@ interface IJobCardProps{
 export function JobCard({element}: IJobCardProps) {
 
     const navigate = useNavigate()
-    const { updateJobs } = useContext(UserDataContext)
+    const { updateJobs, setCurrentJob } = useContext(UserDataContext)
     
     function handleEdit() {
+        setCurrentJob(element)
         navigate("/dashboard/edit-jobs")
     }
 

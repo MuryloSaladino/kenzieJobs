@@ -5,7 +5,8 @@ import { Title1 } from "../../../../styles/typography";
 
 import { useContext } from "react";
 import { UserDataContext } from "../../../../providers/UserDataContext";
-import { ApplyCard } from "./AppliesList";
+import { ApplyCard } from "./ApplyCard";
+import { v4 as uuidv4 } from "uuid";
 
 export function Applies() {
 
@@ -20,7 +21,7 @@ export function Applies() {
                     <Title1 color="var(--color-blue)">Minhas candidaturas</Title1>
 
                     <ul>
-                        {applies && applies.length > 0 ? applies.map(element => <ApplyCard element={element} />) : null}
+                        {applies && applies.length > 0 ? applies.map(element => <ApplyCard key={uuidv4()} element={element} />) : null}
                     </ul>
                 </StyledAppliesDiv>
             </StyledDashboardMain>
