@@ -15,7 +15,7 @@ export function Jobs() {
                 <DashboardNavbar/>
 
                 <StyledJobsDiv>
-                    <Title1>Minhas vagas</Title1>
+                    <Title1 color="var(--color-blue)" >Minhas vagas</Title1>
                     <Link to="/dashboard/create-jobs">
                         <Button buttonStyle="solid"><Icon iconName="add_circle"/>Criar vaga</Button>
                     </Link>
