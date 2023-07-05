@@ -43,7 +43,7 @@ export function UserProvider ({children}:IUserProviderProps) {
 
     async function registerUser (formData:IFormData) {
         try {
-            const {data}:AxiosResponse<IResponse> = await kenzieJobs.post("/users", formData)
+            await kenzieJobs.post("/users", formData)
             navigate("/login")
         } catch (error) {
             console.error(error)
