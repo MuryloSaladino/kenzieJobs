@@ -33,21 +33,17 @@ export const StyledNav = styled.nav`
         height: 119px;
         padding-bottom: 28px;
         justify-content: center;
+        align-items: flex-end;
+        gap: 0;
     
         img{
             height: 24px;
             left: 12px;
             top: 21px;
         }
-
-        b{
-            align-self: flex-end;
-        }
-
         button{
             display: none;
         }
-
         i{
             position: absolute;
             right: 12px;

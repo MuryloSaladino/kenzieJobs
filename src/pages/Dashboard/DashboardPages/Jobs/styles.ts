@@ -17,4 +17,14 @@ export const StyledJobsDiv = styled.div`
         display: flex;
         flex-direction: column;
     }
+
+    @media(max-width: 580px){
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        h1{
+            text-align: center;
+        }
+    }
 `
