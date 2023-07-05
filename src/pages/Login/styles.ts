@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 export const StyledMain =styled.main`
-    background-color: blueviolet;
     max-width: 1328px;
-    margin: 60px auto 0;
+    margin: 60px auto 120px;
 
     display: flex;
     flex-wrap: wrap;
@@ -11,15 +10,15 @@ export const StyledMain =styled.main`
     gap: 60px;
 
     div {
-        background-color: aliceblue;
-    }
-`
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
 
-export const StyledSpan = styled.span`
-    color: aliceblue;
-    background-color: antiquewhite;
-
-    a {
-        color: var(--color-blue);
+        label {
+            text-align:center ;
+            a {
+                color: var(--color-blue);
+            }
+        }
     }
 `

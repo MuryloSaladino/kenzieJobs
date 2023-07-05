@@ -5,6 +5,8 @@ import { TRegisterFormValues, registerSchema } from "./registerSchema";
 import { useContext } from "react";
 import { UserContext } from "../../../providers/UserContext";
 import { Input } from "../../Input/index";
+import { Button } from "../../Button";
+import { Title1 } from "../../../styles/typography";
 
 export function RegisterForm() {
 
@@ -23,13 +25,16 @@ export function RegisterForm() {
         registerUser(newFormdata)
     }
 
-    return (
+    return ( 
         <StyledForm onSubmit={handleSubmit(registerUserForm)} noValidate>
-            <Input placeholder={"name"} {...register("name")} type={"text"} error={errors.name} />
+            <Title1 color="var(--color-blue)">Cadastre-se</Title1>
+            <Input placeholder={"Nome da empresa"} {...register("name")} type={"text"} error={errors.name} />
             <Input placeholder={"E-mail"} {...register("email")} type={"email"} error={errors.email} />
             <Input placeholder={"Senha"} {...register("password")} type={"password"} error={errors.password} />
             <Input placeholder={"Confirmar senha"} {...register("confirm")} type={"password"} error={errors.confirm} />
-            <button type="submit">Cadastrar-se</button>
+            <div>
+                <Button buttonStyle="solid">Cadastrar-se</Button>
+            </div>
         </StyledForm>
     )
 }
