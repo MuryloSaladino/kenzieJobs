@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
 import { kenzieJobs } from "../service/api";
 import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
@@ -73,6 +73,31 @@ export function UserProvider ({children}:IUserProviderProps) {
         setUser(null)
         navigate("/")
     }
+
+    useEffect(()=>{
+        const userId = localStorage.getItem("@USERID")
+        const userToken = localStorage.getItem("@TOKEN")
+        const userLoad = async () => {
+            try {
+                const {data} =  await kenzieJobs.get(`users/${userId}`, {
+                    headers: {
+                        Authorization: `Bearer ${userToken}`
+                    }
+                })
+                console.log(data)
+                const newData = {
+                    name:data.name,
+                    email:data.email,
+                    id:data.id,
+                }
+                setUser(newData)
+                navigate("dashboard")
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        userLoad()
+    },[])
 
     return (
         <UserContext.Provider value={{user, setUser, registerUser, loginUser, logoutUser}}>
