@@ -43,7 +43,7 @@ export function UserProvider ({children}:IUserProviderProps) {
 
     async function registerUser (formData:IFormData) {
         try {
-            const {data}:AxiosResponse<IResponse> = await kenzieJobs.post("users", formData)
+            const {data}:AxiosResponse<IResponse> = await kenzieJobs.post("/users", formData)
             console.log(data)
             navigate("/login")
         } catch (error) {
@@ -53,7 +53,7 @@ export function UserProvider ({children}:IUserProviderProps) {
 
     async function loginUser (formData:IFormData) {
         try {
-            const response:AxiosResponse<IResponse> = await kenzieJobs.post("login", formData)
+            const response:AxiosResponse<IResponse> = await kenzieJobs.post("/login", formData)
             console.log(response)
             const { accessToken, user } = response.data
             localStorage.setItem('@TOKEN', accessToken)
@@ -79,7 +79,7 @@ export function UserProvider ({children}:IUserProviderProps) {
         const userToken = localStorage.getItem("@TOKEN")
         const userLoad = async () => {
             try {
-                const {data} =  await kenzieJobs.get(`users/${userId}`, {
+                const {data} =  await kenzieJobs.get(`/users/${userId}`, {
                     headers: {
                         Authorization: `Bearer ${userToken}`
                     }
