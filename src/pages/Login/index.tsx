@@ -4,7 +4,7 @@ import { Footer } from "../../components/Footer/index";
 import { Navbar } from "../../components/Navbar/index";
 import { StyledMain } from "./styles";
 import loginImage from "../../assets/loginImage.svg";
-import { Label, Paragraph } from "../../styles/typography";
+import { Label } from "../../styles/typography";
 
 export function Login() {
 
