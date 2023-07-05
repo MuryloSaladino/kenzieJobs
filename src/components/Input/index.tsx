@@ -3,7 +3,7 @@ import { forwardRef, ForwardedRef, InputHTMLAttributes } from "react";
 import { FieldError } from 'react-hook-form';
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
-    error: FieldError | undefined;
+    error?: FieldError | undefined;
 }
 
 export const Input = forwardRef(({error, ...rest}:IInputProps, ref: ForwardedRef<HTMLInputElement>) => {
