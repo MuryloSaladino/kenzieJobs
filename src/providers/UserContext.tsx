@@ -77,6 +77,7 @@ export function UserProvider ({children}:IUserProviderProps) {
     useEffect(()=>{
         const userId = localStorage.getItem("@USERID")
         const userToken = localStorage.getItem("@TOKEN")
+        
         const userLoad = async () => {
             try {
                 const {data} =  await kenzieJobs.get(`/users/${userId}`, {
@@ -96,7 +97,7 @@ export function UserProvider ({children}:IUserProviderProps) {
                 console.error(error)
             }
         }
-        userLoad()
+        userToken ? userLoad() : null
     },[])
 
     return (
