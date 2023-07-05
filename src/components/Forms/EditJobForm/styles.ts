@@ -2,18 +2,28 @@ import styled from "styled-components";
 
 export const StyledEditJobForm = styled.form`
     width: 100%;
-    max-width: 542px;
     margin: 0 auto;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 17px;
 
-    button{
+    >div{
+        width: 100%;
         display: flex;
-        align-items: center;
-        gap: 10px;
+        gap: 45px;
+    }
 
-        align-self: flex-end;
+    >div>div{
+        width: 100%;
+        max-width: 639px;
+        display: flex;
+        flex-direction: column;
+        gap: 17px
+    }
+
+    input, textarea{
+        max-width: 639px;
     }
 `

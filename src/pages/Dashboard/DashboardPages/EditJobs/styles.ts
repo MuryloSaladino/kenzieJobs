@@ -5,6 +5,10 @@ export const StyledEditMain = styled.main`
     max-width: 1328px;
     margin: 30px auto;
 
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
     a{
         display: flex;
         align-items: center;
