@@ -1,11 +1,12 @@
 import { StyledInput } from "./styles";
-import { forwardRef, ForwardedRef } from "react";
+import { forwardRef, ForwardedRef, InputHTMLAttributes } from "react";
+import { FieldError } from 'react-hook-form';
 
-interface IInputProps {
-    error: { message: string } | null;
+interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
+    error: FieldError | undefined;
 }
 
-export const Input = forwardRef<HTMLInputElement, IInputProps>(({error, ...rest}, ref: ForwardedRef<HTMLInputElement>) => {
+export const Input = forwardRef(({error, ...rest}:IInputProps, ref: ForwardedRef<HTMLInputElement>) => {
     return(
     <>
         <StyledInput ref={ref} {...rest} />
