@@ -15,7 +15,6 @@ export function LoginForm() {
     })
 
     const loginUserForm:SubmitHandler<TLoginFormValues> = (formData) => {
-        console.log(formData)
         loginUser(formData)
     }
 

@@ -20,7 +20,6 @@ export function RegisterForm() {
             email:formData.email,
             password:formData.password
         }
-        console.log(newFormdata)
         registerUser(newFormdata)
     }
 
