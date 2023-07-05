@@ -1,14 +1,15 @@
 import { StyledInput } from "./styles";
-import { UseFormRegisterReturn } from "react-hook-form";
+import { forwardRef, ForwardedRef } from "react";
 
-interface IInputProps{
-    placeholder: string;
-    type?: string;
-    register: UseFormRegisterReturn<string>;
+interface IInputProps {
+    error: { message: string } | null;
 }
 
-export function Input({placeholder, type, register}:IInputProps) {
+export const Input = forwardRef<HTMLInputElement, IInputProps>(({error, ...rest}, ref: ForwardedRef<HTMLInputElement>) => {
     return(
-        <StyledInput type={type} placeholder={placeholder} {...register} />
+    <>
+        <StyledInput ref={ref} {...rest} />
+        {error ? <span>{error.message}</span>: null}
+    </>
     )
-}
+})

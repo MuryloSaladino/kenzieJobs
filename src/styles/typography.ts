@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 interface ITypographyProps{
     color?: string;
-    bold?: string;
+    bold?: boolean;
 }
 
 export const Title1 = styled.h1<ITypographyProps>`
