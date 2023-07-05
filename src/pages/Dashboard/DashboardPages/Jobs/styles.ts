@@ -11,7 +11,10 @@ export const StyledJobsDiv = styled.div`
         align-items: center;
         gap: 10px;
     }
-    a{
-        line-height: 100%;
+
+    ul{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
     }
 `

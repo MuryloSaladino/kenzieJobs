@@ -84,7 +84,7 @@ export function UserDataProvider({children}: IUserDataProviderProps) {
         updateJobs()
         updateApplies()
     }, [])
-    
+
 
     return(
         <UserDataContext.Provider value={{jobs, applies, updateJobs, updateApplies, currentJob, setCurrentJob}}>
