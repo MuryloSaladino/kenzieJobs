@@ -4,6 +4,7 @@ import { TLoginFormValues, loginSchema } from "./loginSchema";
 import { StyledForm } from "./style";
 import { useContext } from "react";
 import { UserContext } from "../../../providers/UserContext";
+import { Input } from "../../Input/index";
 
 export function LoginForm() {
 
@@ -21,12 +22,8 @@ export function LoginForm() {
     return (
         <StyledForm onSubmit={handleSubmit(loginUserForm)} noValidate>
             <h3>Faça login</h3>
-            <input type="text" placeholder="E-mail" {...register("email")}/>
-            {errors.email? <span>{errors.email.message}</span>:null}
-
-            <input type="password" placeholder="Password"{...register("password") } />
-            {errors.email? <span>{errors.email.message}</span>:null}
-
+            <Input {...register("email")} type={"email"} placeholder={"E-mail"} error={errors.email} />
+            <Input {...register("password")} type={"password"} placeholder={"Senha"} error={errors.password} />
             <button type="submit">Entrar</button>
         </StyledForm>
     )

@@ -6,7 +6,6 @@ import { useContext } from "react";
 import { UserContext } from "../../../providers/UserContext";
 import { Input } from "../../Input/index";
 
-
 export function RegisterForm() {
 
     const {registerUser} = useContext(UserContext)
@@ -27,18 +26,10 @@ export function RegisterForm() {
 
     return (
         <StyledForm onSubmit={handleSubmit(registerUserForm)} noValidate>
-            <input type="text" {...register("name")} placeholder="Nome da empresa" />
-            {errors.name ? <span>{errors.name.message}</span>:null}
-
-            {/* <input type="email" {...register("email")} placeholder="E-mail" />
-            {errors.email ? <span>{errors.email.message}</span>:null} */}
-            <Input placeholder={"E-mail"} {...register("email")} type="email" error={errors.email} />
-            
-            <input type="password"  {...register("password")} placeholder="Senha" />
-            {errors.password ? <span>{errors.password.message}</span>:null}
-            <input type="password" {...register("confirm")} placeholder="Confirmar senha" />
-            {errors.confirm ? <span>{errors.confirm.message}</span>:null}
-
+            <Input placeholder={"name"} {...register("name")} type={"text"} error={errors.name} />
+            <Input placeholder={"E-mail"} {...register("email")} type={"email"} error={errors.email} />
+            <Input placeholder={"Senha"} {...register("password")} type={"password"} error={errors.password} />
+            <Input placeholder={"Confirmar senha"} {...register("confirm")} type={"password"} error={errors.confirm} />
             <button type="submit">Cadastrar-se</button>
         </StyledForm>
     )
