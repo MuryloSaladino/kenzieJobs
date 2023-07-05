@@ -10,11 +10,13 @@ export const GlobalStyles = createGlobalStyle`
 
     body{
         min-height: 100vh;
-        padding: 90px 0 103px;
+        padding: 100px 0 120px;
         position: relative;
         font-family: 'Montserrat', sans-serif;
     }
     @media(max-width: 580px) {
-        padding: 119px 0 204px
+        body{
+            padding: 130px 0 220px
+        }
     }
 `

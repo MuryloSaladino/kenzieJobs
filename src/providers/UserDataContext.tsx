@@ -54,7 +54,6 @@ export function UserDataProvider({children}: IUserDataProviderProps) {
         }
         try {
             const {data}:AxiosResponse<IJobs[]> = await kenzieJobs.get(`/users/${companyId}/jobs`, options)
-            console.log(data)
             setJobs(data)
         } catch (error) {
             console.error(error)

@@ -1,9 +1,9 @@
 import { z } from "zod";
 
 export const createJobSchema = z.object({
-    position: z.string().nonempty("Os campos não podem estar vazios"),
+    position: z.string().nonempty("Este campo não podem estar vazio"),
     sallary: z.string().min(0),
-    description: z.string().nonempty("Os campos não podem estar vazios"),
+    description: z.string().nonempty("Este campo não podem estar vazio"),
 });
 
 export type TCreateJobFormValues = z.infer<typeof createJobSchema>;
