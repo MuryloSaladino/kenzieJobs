@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UserContext } from "../../../../../providers/UserContext";
+import { UserDataContext } from "../../../../../providers/UserDataContext";
 
 import { StyledJobUl } from "./styles";
 import { JobCard } from "./JobCard";
@@ -8,11 +8,20 @@ import { v4 as uuidv4 } from "uuid"
 
 export function JobList() {
 
-    //const { jobs, updateJobs } = useContext(UserContext)
+    const { jobs, updateJobs } = useContext(UserDataContext)
+
+    //updateJobs()
 
     return(
         <StyledJobUl>
-            {/*jobs.map(element => <JobCard key={uuidv4()} element={element} />)*/}
+            <JobCard element={
+                {userId: 1,
+                id: 1,
+                position: "Developer Jr",
+                sallary: 1000,
+                description: "Junior Developer at Kenzie"}
+            }/>
+                {jobs && jobs.length > 0 ? jobs.map(element => <JobCard key={uuidv4()} element={element} />) : null}
         </StyledJobUl>
     )
 }

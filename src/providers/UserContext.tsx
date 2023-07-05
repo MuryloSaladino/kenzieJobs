@@ -2,7 +2,6 @@ import { createContext, useState, ReactNode } from "react";
 import { kenzieJobs } from "../service/api";
 import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify"
 
 export const UserContext = createContext({});
 
@@ -11,23 +10,6 @@ interface IUserProviderProps {
 }
 
 export function UserProvider ({children}:IUserProviderProps) {
-
-    interface IJobs{
-        userId: number,
-        id: number,
-        position: string,
-        sallary: number,
-        description: string
-    }
-
-    interface IApplies{
-        id: number,
-        jobId: number,
-        userId: number,
-        name: string,
-        email: string,
-        linkedin: string
-    }
     
     interface IFormData {
         email: string,
@@ -35,7 +17,6 @@ export function UserProvider ({children}:IUserProviderProps) {
         name?: string,
         id?:string
     }
-    
     interface IRegisterUser {
         accessToken:string,
         user:IFormData
@@ -43,38 +24,8 @@ export function UserProvider ({children}:IUserProviderProps) {
     
 
     const [user, setUser] = useState(null)
-    const [jobs, setJobs] = useState<IJobs[]>([])
-    const [applies, setApplies] = useState<IApplies[]>([])
     const navigate = useNavigate()
 
-
-    async function updateJobs(companyId:string, successMessage:string) {
-        const token = localStorage.getItem("@TOKEN")
-        const options = {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }
-        try {
-            const {data}:AxiosResponse<IJobs[]> = await kenzieJobs.get(`users/${companyId}/jobs`, options)
-            setJobs(data)
-            if(successMessage){toast.success(successMessage)}
-        } catch (error) {
-            console.error(error)
-            toast.error("Oops! Parece que algo deu errado.")
-        }
-    }
-
-    async function updateApplies(companyId:string, successMessage:string) {
-        try {
-            const {data}:AxiosResponse<IApplies[]> = await kenzieJobs.get(`users/${companyId}/jobs`)
-            setApplies(data)
-            if(successMessage){toast.success(successMessage)}
-        } catch (error) {
-            console.error(error)
-            toast.error("Oops! Parece que algo deu errado.")
-        }
-    }
 
     async function registerUser (formData:IFormData) {
         try {
@@ -107,7 +58,7 @@ export function UserProvider ({children}:IUserProviderProps) {
     }
 
     return (
-        <UserContext.Provider value={{user, setUser, registerUser, loginUser, logoutUser, jobs, applies, updateJobs, updateApplies}}>
+        <UserContext.Provider value={{user, setUser, registerUser, loginUser, logoutUser}}>
             {children}
         </UserContext.Provider>
     )
