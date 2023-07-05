@@ -30,7 +30,6 @@ export function ApplyCard({element}: IApplyCardProps) {
         open ? setOpen(false) : setOpen(true) 
     }
 
-
     return(
         <StyledApplyLi open={open} >
             <Title3>{element.name} - {jobName ? jobName : ""}</Title3>

@@ -1,14 +1,21 @@
 import { StyledDashboardMain } from "../../styles";
 import { DashboardNavbar } from "../../../../components/DashboardNavbar";
 import { StyledJobsDiv } from "./styles";
-import { JobList } from "./JobsList";
+import { JobCard } from "./JobCard";
 
 import { Button } from "../../../../components/Button";
 import { Link } from "react-router-dom";
 import { Icon } from "../../../../components/Icon";
 import { Title1 } from "../../../../styles/typography";
 
+import { useContext } from "react";
+import { UserDataContext } from "../../../../providers/UserDataContext";
+import { v4 as uuidv4 } from "uuid";
+
 export function Jobs() {
+
+    const { jobs } = useContext(UserDataContext)
+
     return(
         <>
             <StyledDashboardMain>
@@ -21,7 +28,9 @@ export function Jobs() {
                     </Link>
                 </StyledJobsDiv>
 
-                <JobList/>
+                <ul>
+                    {jobs && jobs.length > 0 ? jobs.map(element => <JobCard key={uuidv4()} element={element} />) : null}
+                </ul>
 
             </StyledDashboardMain>
         </>
