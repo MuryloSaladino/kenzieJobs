@@ -8,7 +8,7 @@ export const ResetStyles = createGlobalStyle`
 
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
+    abbr, acronym, address, big, cite, code,
     del, dfn, em, img, ins, kbd, q, s, samp,
     small, strike, strong, sub, sup, tt, var,
     b, u, i, center,
@@ -23,8 +23,8 @@ export const ResetStyles = createGlobalStyle`
         padding: 0;
         border: 0;
         font-size: 100%;
-        font: inherit;
         vertical-align: baseline;
+        box-sizing: border-box;
     }
     /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure, 
@@ -51,5 +51,12 @@ export const ResetStyles = createGlobalStyle`
     }
     input, dialog {
         outline: none;
+    }
+
+    a{
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
+        text-decoration: none;
     }
 ` 

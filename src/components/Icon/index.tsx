@@ -2,11 +2,11 @@ import { StyledIcon } from "./styles";
 
 interface IIconProps{
     iconName: string;
-    color: string;
+    color?: string;
 }
 
 export function Icon({iconName, color}: IIconProps) {
     return(
-        <StyledIcon color={color} className="material-icons">{iconName}</StyledIcon>
+        <StyledIcon color={color ? color : "var(--color-white)"} className="material-icons">{iconName}</StyledIcon>
     )
 }

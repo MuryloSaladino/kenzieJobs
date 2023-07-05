@@ -18,9 +18,14 @@ export const StyledButton = styled.button<IStyledButtonProps>`
     color: ${({buttonStyle}) => buttonStyle === 'outline' ? 'var(--color-blue)' : 'var(--color-white)'};
 
     transition: 0.3s;
+    cursor: pointer;
 
     :hover{
         background-color: var(--color-Lightblue);
         ${({buttonStyle}) => buttonStyle === 'solid' ? 'color: var(--color-blue);' : null};
+
+        i{
+            ${({buttonStyle}) => buttonStyle === 'solid' ? 'color: var(--color-blue);' : null};
+        }
     }
 `
