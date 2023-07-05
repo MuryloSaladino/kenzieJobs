@@ -23,8 +23,10 @@ export function LoginForm() {
             <h3>Faça login</h3>
             <input type="text" placeholder="E-mail" {...register("email")}/>
             {errors.email? <span>{errors.email.message}</span>:null}
+
             <input type="password" placeholder="Password"{...register("password") } />
             {errors.email? <span>{errors.email.message}</span>:null}
+
             <button type="submit">Entrar</button>
         </StyledForm>
     )

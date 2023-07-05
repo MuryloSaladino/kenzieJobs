@@ -95,6 +95,8 @@ export function UserProvider ({children}:IUserProviderProps) {
                 navigate("/dashboard")
             } catch (error) {
                 console.error(error)
+                localStorage.removeItem("@TOKEN")
+                localStorage.removeItem("@USERID")
             }
         }
         userToken ? userLoad() : null
