@@ -33,8 +33,14 @@ export function JobCard({element}: IJobCardProps) {
     }
 
     async function handleDelete() {
+        const token = localStorage.getItem("@TOKEN")
+        const options = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
         try {
-            await kenzieJobs.delete(`/jobs/${element.id}`)
+            await kenzieJobs.delete(`/jobs/${element.id}`, options)
             updateJobs()
             toast.success("Vaga excluída!")
         } catch (error) {

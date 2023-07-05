@@ -13,7 +13,7 @@ import { Applies } from "../pages/Dashboard/DashboardPages/Applies";
 import { CreateJobs } from "../pages/Dashboard/DashboardPages/CreateJobs";
 import { EditJobs } from "../pages/Dashboard/DashboardPages/EditJobs";
 import { Jobs } from "../pages/Dashboard/DashboardPages/Jobs";
-import { UserProvider } from "../providers/UserContext";
+import { UserDataProvider } from "../providers/UserDataContext";
 
 export function RoutesMain() {
     return(
@@ -24,7 +24,7 @@ export function RoutesMain() {
             <Route path="/register" element={<Register/>} />
 
             <Route path="/dashboard" element={<ProtectedRoute/>} >
-                <Route element={<UserProvider><Dashboard/></UserProvider>} >
+                <Route element={<UserDataProvider><Dashboard/></UserDataProvider>} >
                     <Route index element={<Feed/>} />
                     <Route path="/dashboard/applies" element={<Applies/>} />
                     <Route path="/dashboard/create-jobs" element={<CreateJobs/>} />
