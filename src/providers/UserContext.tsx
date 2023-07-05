@@ -45,7 +45,7 @@ export function UserProvider ({children}:IUserProviderProps) {
         try {
             const {data}:AxiosResponse<IResponse> = await kenzieJobs.post("users", formData)
             console.log(data)
-            navigate("login")
+            navigate("/login")
         } catch (error) {
             console.error(error)
         }
@@ -59,7 +59,7 @@ export function UserProvider ({children}:IUserProviderProps) {
             localStorage.setItem('@TOKEN', accessToken)
             localStorage.setItem('@USERID',  user.id ? user.id : '')
             setUser(user)
-            navigate("dashboard")
+            navigate("/dashboard")
         } catch (error) {
             console.error(error)
         }
@@ -91,7 +91,7 @@ export function UserProvider ({children}:IUserProviderProps) {
                     id:data.id,
                 }
                 setUser(newData)
-                navigate("dashboard")
+                navigate("/dashboard")
             } catch (error) {
                 console.error(error)
             }

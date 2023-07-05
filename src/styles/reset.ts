@@ -54,9 +54,6 @@ export const ResetStyles = createGlobalStyle`
     }
 
     a{
-        font-size: inherit;
-        font-weight: inherit;
-        color: inherit;
         text-decoration: none;
     }
 ` 
