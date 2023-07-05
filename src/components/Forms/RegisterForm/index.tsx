@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { TRegisterFormValues, registerSchema } from "./registerSchema";
 import { useContext } from "react";
 import { UserContext } from "../../../providers/UserContext";
+import { Input } from "../../Input/index";
 
 
 export function RegisterForm() {
@@ -28,8 +29,11 @@ export function RegisterForm() {
         <StyledForm onSubmit={handleSubmit(registerUserForm)} noValidate>
             <input type="text" {...register("name")} placeholder="Nome da empresa" />
             {errors.name ? <span>{errors.name.message}</span>:null}
-            <input type="email" {...register("email")} placeholder="E-mail" />
-            {errors.email ? <span>{errors.email.message}</span>:null}
+
+            {/* <input type="email" {...register("email")} placeholder="E-mail" />
+            {errors.email ? <span>{errors.email.message}</span>:null} */}
+            <Input placeholder={"E-mail"} {...register("email")} type="email" error={errors.email} />
+            
             <input type="password"  {...register("password")} placeholder="Senha" />
             {errors.password ? <span>{errors.password.message}</span>:null}
             <input type="password" {...register("confirm")} placeholder="Confirmar senha" />
