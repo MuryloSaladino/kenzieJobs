@@ -3,34 +3,48 @@ import { kenzieJobs } from "../service/api";
 import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const UserContext = createContext({});
 
-interface IProps {
-    children: ReactNode;
+interface IUserContext {
+    user: IUser | null;
+    setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
+    registerUser(formData: IFormData): Promise<void>;
+    loginUser(formData: IFormData): Promise<void>;
+    logoutUser(): Promise<void>;
 }
 
-export function UserProvider ({children}:IProps) {
+interface IUserProviderProps {
+    children: React.ReactNode;
+};
+
+interface IUser {
+    email:string;
+    name:string;
+    id:string;
+}
+
+interface IFormData {
+    email: string,
+    password: string,
+    name?: string,
+    id?:string
+}
+
+interface IResponse {
+    accessToken: string,
+    user: IUser
+}
+
+export const UserContext = createContext({} as IUserContext);
+
+export function UserProvider ({children}:IUserProviderProps) {
     const navigate = useNavigate()
 
-    const [user, setUser] = useState(null)
-
-    interface IFormData {
-        email: string,
-        password: string,
-        name?: string,
-        id?:string
-    }
-    
-
-    interface IRegisterUser {
-        accessToken:string,
-        user:IFormData
-    }
+    const [user, setUser] = useState<IUser | null>(null)
 
     async function registerUser (formData:IFormData) {
         try {
-            const response:AxiosResponse<IRegisterUser> = await kenzieJobs.post("users", formData)
-            console.log(response)
+            const {data}:AxiosResponse<IResponse> = await kenzieJobs.post("users", formData)
+            console.log(data)
             navigate("login")
         } catch (error) {
             console.error(error)
@@ -39,16 +53,19 @@ export function UserProvider ({children}:IProps) {
 
     async function loginUser (formData:IFormData) {
         try {
-            const response:AxiosResponse<IRegisterUser> = await kenzieJobs.post("login", formData)
+            const response:AxiosResponse<IResponse> = await kenzieJobs.post("login", formData)
             console.log(response)
             const { accessToken, user } = response.data
             localStorage.setItem('@TOKEN', accessToken)
             localStorage.setItem('@USERID',  user.id ? user.id : '')
+            setUser(user)
             navigate("dashboard")
         } catch (error) {
             console.error(error)
         }
     }
+
+    console.log(user)
 
     async function logoutUser() {
         localStorage.removeItem("TOKEN")
