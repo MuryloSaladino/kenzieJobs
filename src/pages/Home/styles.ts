@@ -46,6 +46,7 @@ export const StyledSection3 = styled.section`
 
     h1{
         margin: 20px auto;
+        text-align: center;
     }
 `
 
