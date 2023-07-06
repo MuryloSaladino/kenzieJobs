@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface IStyledNavProps{
+    user?: boolean;
+}
+
 export const StyledHeader = styled.header`
     width: 100%;
     background-color: var(--color-white);
@@ -8,7 +12,7 @@ export const StyledHeader = styled.header`
     top: 0;
 `
 
-export const StyledNav = styled.nav`
+export const StyledNav = styled.nav<IStyledNavProps>`
     height: 90px;
     width: 98%;
     max-width: 1328px;
@@ -28,11 +32,15 @@ export const StyledNav = styled.nav`
         top: 50%;
         transform: translate(0, -50%);
     }
+    >div{
+        display: flex;
+        gap: 15px;
+    }
 
     @media(max-width: 580px) {
 
         height: 119px;
-        padding-bottom: 28px;
+        ${({user}) => user ? null : "padding-bottom: 28px;"}
         justify-content: center;
         align-items: flex-end;
         gap: 0;
@@ -40,15 +48,20 @@ export const StyledNav = styled.nav`
         img{
             height: 24px;
             left: 12px;
-            top: 21px;
+            ${({user}) => user ? "top: 50px;" : "top: 21px;"}
         }
         button{
-            display: none;
+            ${({user}) => user ? "" : "display: none;"}
         }
         i{
             position: absolute;
             right: 12px;
             top: 21px;
+        }
+        >div{
+            position: absolute;
+            top: 21px;
+            right: 12px;
         }
     }
 `

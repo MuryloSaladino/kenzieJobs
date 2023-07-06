@@ -32,15 +32,17 @@ export function Navbar() {
 
     return(
         <StyledHeader>
-            <StyledNav>
+            <StyledNav user={user?true:false}>
 
                 <Link to="/"><img src={logo} alt="Logo"/></Link>
 
                 {
                     user?
                     <>
-                        <Link to="/dashboard"><Button circle={true} buttonStyle="solid">{getInicials(user.name)}</Button></Link>
-                        <Button handleClick={logoutUser} buttonStyle="outline">Sair</Button>
+                        <div>
+                            <Link to="/dashboard"><Button circle={true} buttonStyle="solid">{getInicials(user.name)}</Button></Link>
+                            <Button handleClick={logoutUser} buttonStyle="outline">Sair</Button>
+                        </div>
                     </> 
                     :
                     <>
