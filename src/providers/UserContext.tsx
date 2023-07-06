@@ -15,6 +15,7 @@ interface IUserContext {
     setCurrentJobToApply: React.Dispatch<React.SetStateAction<IJobs | null>>;
     openApplyModal(): void;
     closeApplyModal(): void;
+    modalRef: React.RefObject<HTMLDialogElement>
 }
 interface IUserProviderProps {
     children: React.ReactNode;
@@ -118,7 +119,18 @@ export function UserProvider ({children}:IUserProviderProps) {
     },[])
 
     return (
-        <UserContext.Provider value={{user, setUser, registerUser, loginUser, logoutUser, currentJobToApply, setCurrentJobToApply, openApplyModal, closeApplyModal}}>
+        <UserContext.Provider value={{
+            user,
+            setUser,
+            registerUser,
+            loginUser,
+            logoutUser,
+            currentJobToApply,
+            setCurrentJobToApply,
+            openApplyModal,
+            closeApplyModal,
+            modalRef
+        }}>
             {children}
         </UserContext.Provider>
     )

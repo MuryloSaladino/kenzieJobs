@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { Footer } from "../../components/Footer";
+import { StyledSearchDiv, StyledSearchPageMain, StyledSearchUl } from "./styles";
 import { Navbar } from "../../components/Navbar";
-import { MenuText, Paragraph, Title1, Title2, Label } from "../../styles/typography";
-import { kenzieJobs } from "../../service/api";
-import { StyledSearchPage, StyledMainContent, StyledSearchForm } from "./styles";
-import { Button } from "../../components/Button";
+import { Footer } from "../../components/Footer";
+import { BoldAlert, MenuText, Paragraph, Title1, Title2 } from "../../styles/typography";
 import { Input } from "../../components/Input";
-import axios from "axios";
+import { Button } from "../../components/Button";
 import { Icon } from "../../components/Icon";
-import { useContext } from "react";
-import { UserContext } from "../../providers/UserContext";
 import { ModalApply } from "../../components/ModalApply";
+
+import { useState } from "react";
+import { useContext } from "react";
+import { HomeContext } from "../../providers/HomeContext";
+import { HomeJobCard } from "../../components/HomeJobCard";
+import { v4 as uuidv4 } from "uuid";
 
 interface IJob {
   userId: number;
@@ -21,89 +21,55 @@ interface IJob {
   description: string;
 }
 
-interface IJobSearch {
-  position?: string;
-}
-
-interface IFormdata {
-  position?: string;
-}
-
 export function SearchPage() {
-  const { openApplyModal, setCurrentJobToApply } = useContext(UserContext);
-    
-  const [jobs, setJobs] = useState<IJob[]>([])
-  const [search, setSearch] = useState<IJobSearch>({})
-  const [isSearchClicked, setIsSearchClicked] = useState(false)
-  const {register, handleSubmit} = useForm() 
 
-  useEffect(() => {
-    const getJobs = async () => {
-      try {
-        const response = await kenzieJobs.get<IJob[]>('/jobs', {
-          params: {
-            position_like: search.position
-          }
-        })
-        setJobs(response.data)
-        console.log(response.data)
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          console.log(error.response?.data)
+    const { allJobs } = useContext(HomeContext);
+    const [filteredJobs, setFilteredJobs] = useState<IJob[]>([]);
+    const [search, setSearch] = useState<string>("");
+    const [lastSearch, setLastSearch] = useState<string>("");
+
+    function filterJobs() {
+        if(search.length > 0) {
+            setFilteredJobs(
+                allJobs.filter(
+                    job => job.position.toLowerCase().includes(search.toLowerCase()) 
+                        || job.position.toLowerCase().includes(search.toLowerCase())
+                )
+            )
+            setLastSearch(search);
+        } else{
+            setFilteredJobs([]);
+            setLastSearch("");
         }
-        console.log("Internal error.", error)
-      }
     }
 
-    if (isSearchClicked) {
-      getJobs()
-    }
-  }, [search, isSearchClicked])
-
-  const submit = (formData:IFormdata) => {
-    setSearch(formData)
-    setIsSearchClicked(true)
-  }
-
-  const openJob = (job:IJob) => {
-    openApplyModal()
-    setCurrentJobToApply(job)
-  }
-
-  return (
-    <StyledSearchPage>
-      <Navbar></Navbar>
-      <ModalApply/>
-
-      <StyledMainContent>
-        <Title1 color={"var(--color-blue)"}>Busca de vagas</Title1>
-        <MenuText>Digite o que você está procurando:</MenuText>
-        <StyledSearchForm onSubmit={handleSubmit(submit)}>
-          <Input type="text" placeholder="Pesquisar" {...register("position")} />
-          <Button buttonStyle="solid" circle={true}><Icon iconName="search" color="var(--color-white)"></Icon></Button>
-        </StyledSearchForm>
-        {isSearchClicked ? <Label color={"black"}>Resultados de busca para: <Paragraph bold={true}>{search.position}</Paragraph></Label>
-        : null}
-        {isSearchClicked && (
-          <ul>
-            {jobs.length > 0 ? (
-              jobs.map((job) => 
-              <div>
-                <li key={job.id}>
-                  {job.position}
-                  <button onClick={() => openJob(job)}>abrir job</button>
-                </li>
-              </div>) 
-            ) : (
-              <div>
-                <Title2>Desculpe :(!</Title2>
-                <Paragraph>Nenhum resultado encontrado</Paragraph>
-              </div>
-            )}
-          </ul>
-        )}
-      </StyledMainContent>
-      <Footer></Footer>
-    </StyledSearchPage>
-  )
+    return (
+    <>
+        <ModalApply/>
+        <Navbar/>
+        <StyledSearchPageMain searching={filteredJobs.length > 0 ? true : false}>
+            <Title1 color="var(--color-blue)">Busca de vagas</Title1>
+            <StyledSearchDiv>
+                <MenuText>Digite o que você está procurando:</MenuText>
+                <form onSubmit={(e) => {e.preventDefault(); filterJobs()}}>
+                    <Input placeholder="Pesquisa" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                    <Button buttonStyle="solid" circle={true}><Icon iconName="search"/></Button>
+                </form>
+                {lastSearch.length > 0 ? <Paragraph>Exibindo resultados de busca para: <BoldAlert>{lastSearch}</BoldAlert></Paragraph> : null}
+            </StyledSearchDiv>
+            <StyledSearchUl>
+                {filteredJobs.map(job => <HomeJobCard job={job} key={uuidv4()}/>)}
+                {
+                    filteredJobs.length == 0 && lastSearch.length > 0 ?
+                    <>
+                        <Title2>Desculpe :(!</Title2>
+                        <Paragraph>Nenhun resultado encontrado</Paragraph>
+                    </> 
+                    : null
+                }
+            </StyledSearchUl>
+        </StyledSearchPageMain>
+        <Footer/>
+    </>
+    )
 }

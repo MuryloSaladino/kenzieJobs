@@ -12,12 +12,13 @@ import { Jobs } from "../pages/Dashboard/DashboardPages/Jobs";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
 import { UserDataProvider } from "../providers/UserDataContext";
+import { HomeProvider } from "../providers/HomeContext";
 
 export function RoutesMain() {
     return(
         <Routes>
-            <Route path="*" element={<Home/>}/>
-            <Route path="/search-jobs" element={<SearchPage/>}/>
+            <Route path="*" element={<HomeProvider><Home/></HomeProvider>}/>
+            <Route path="/search-jobs" element={<HomeProvider><SearchPage/></HomeProvider>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/dashboard" element={<ProtectedRoute/>} >

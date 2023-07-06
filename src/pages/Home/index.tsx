@@ -1,10 +1,13 @@
-
+import { Footer } from "../../components/Footer";
+import { Navbar } from "../../components/Navbar";
 
 export function Home() {
     
     return(
         <>
-            Aqui é a home
+            <Navbar/>
+            aqui é a home
+            <Footer/>
         </>
     )
 }
