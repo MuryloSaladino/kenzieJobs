@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const StyledInput = styled.input`
+export const StyledTextarea = styled.textarea`
+    height: 236px;
     width: 100%;
     max-width: 542px;
-    box-sizing: border-box;
-    
+
     padding: 23px 35px;
     border: solid 1px var(--color-blue);
-    border-radius: 255px;
+    border-radius: 30px;
 
     color: var(--color-black);
     font-size: 1rem;
@@ -15,13 +15,20 @@ export const StyledInput = styled.input`
 
     box-sizing: border-box;
 
+    resize: none;
+
     ::placeholder{
         color: rgba(16, 17, 26, 0.50);
         font-size: 1rem;
         font-weight: 700;
+        font-family: "Montserrat", sans-serif;
     }
 
     :focus::placeholder{
         color: transparent;
+    }
+
+    ::-webkit-scrollbar{
+        width: 5px;
     }
 `

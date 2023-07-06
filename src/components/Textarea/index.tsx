@@ -1,17 +1,17 @@
-import { StyledInput } from "./styles";
+import { StyledTextarea } from "./styles";
 import { BoldAlert } from "../../styles/typography";
 
 import { forwardRef, ForwardedRef, InputHTMLAttributes } from "react";
 import { FieldError } from "react-hook-form";
 
-interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface ITextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
     error?: FieldError | undefined;
 }
 
-export const Input = forwardRef(({error, ...rest}:IInputProps, ref: ForwardedRef<HTMLInputElement>) => {
+export const TextArea = forwardRef(({error, ...rest}:ITextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => {
     return(
     <>
-        <StyledInput ref={ref} {...rest} />
+        <StyledTextarea ref={ref} {...rest} />
         {error ? <BoldAlert color="red">{error.message}</BoldAlert>: null}
     </>
     )

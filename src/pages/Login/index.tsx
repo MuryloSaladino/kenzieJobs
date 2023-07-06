@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { StyledMain } from "./styles";
 import { LoginForm } from "../../components/Forms/LoginForm";
-import { Footer } from "../../components/Footer/index";
 import { Navbar } from "../../components/Navbar/index";
-import { StyledMain, StyledSpan } from "./styles";
+import { Footer } from "../../components/Footer/index";
+import { Label } from "../../styles/typography";
 import loginImage from "../../assets/loginImage.svg";
-import { Label, Paragraph } from "../../styles/typography";
+
+import { Link } from "react-router-dom";
 
 export function Login() {
 
@@ -15,7 +16,9 @@ export function Login() {
                 <img src={loginImage}/>
                 <div>
                     <LoginForm/>
-                    <Paragraph>Não possui cadastro?<Label><Link to={"/register"} >Cadastre-se</Link></Label> </Paragraph>
+                    <Label color="var(--color-black)">
+                        Não possui cadastro? <Link to="/register"><Label>Cadastre-se</Label></Link>
+                    </Label>
                 </div>
             </StyledMain>
             <Footer/>

@@ -1,14 +1,17 @@
-import { SubmitHandler ,useForm } from "react-hook-form";
 import { StyledForm } from "./style";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "../../Input/index";
+import { Button } from "../../Button";
+import { Title1 } from "../../../styles/typography";
+
+import { SubmitHandler ,useForm } from "react-hook-form";
 import { TRegisterFormValues, registerSchema } from "./registerSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { UserContext } from "../../../providers/UserContext";
-import { Input } from "../../Input/index";
 
 export function RegisterForm() {
 
-    const {registerUser} = useContext(UserContext)
+    const {registerUser} = useContext(UserContext);
 
     const {register, handleSubmit, formState:{errors}} = useForm<TRegisterFormValues>({
         resolver:zodResolver(registerSchema)
@@ -20,16 +23,19 @@ export function RegisterForm() {
             email:formData.email,
             password:formData.password
         }
-        registerUser(newFormdata)
+        registerUser(newFormdata);
     }
 
-    return (
+    return ( 
         <StyledForm onSubmit={handleSubmit(registerUserForm)} noValidate>
-            <Input placeholder={"name"} {...register("name")} type={"text"} error={errors.name} />
+            <Title1 color="var(--color-blue)">Cadastre-se</Title1>
+            <Input placeholder={"Nome da empresa"} {...register("name")} type={"text"} error={errors.name} />
             <Input placeholder={"E-mail"} {...register("email")} type={"email"} error={errors.email} />
             <Input placeholder={"Senha"} {...register("password")} type={"password"} error={errors.password} />
             <Input placeholder={"Confirmar senha"} {...register("confirm")} type={"password"} error={errors.confirm} />
-            <button type="submit">Cadastrar-se</button>
+            <div>
+                <Button buttonStyle="solid">Cadastrar-se</Button>
+            </div>
         </StyledForm>
     )
 }

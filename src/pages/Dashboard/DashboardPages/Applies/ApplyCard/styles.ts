@@ -16,13 +16,10 @@ export const StyledApplyLi = styled.li<StyledApplyLiProps>`
 
     position: relative;
     transition: 0.3s;
+    overflow: hidden;
 
     :hover{
         background-color: var(--color-Lightblue);
-    }
-
-    p{
-        ${({open}) => open ? null : "display: none;"}
     }
 
     i{
