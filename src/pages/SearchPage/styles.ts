@@ -19,11 +19,9 @@ export const StyledSearchForm = styled.form`
    justify-content: center;
    gap: 0.5rem;
 
-
    button{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
    }
 `

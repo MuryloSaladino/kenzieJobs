@@ -6,14 +6,18 @@ import { MenuText, Paragraph, Title1, Title2, Label } from "../../styles/typogra
 import { kenzieJobs } from "../../service/api";
 import { StyledSearchPage, StyledMainContent, StyledSearchForm } from "./styles";
 import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
 import axios from "axios";
 import { Icon } from "../../components/Icon";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
+import { ModalApply } from "../../components/ModalApply";
 
 interface IJob {
   userId: number;
   id: number;
   position: string;
-  salary: number;
+  sallary: number;
   description: string;
 }
 
@@ -26,11 +30,12 @@ interface IFormdata {
 }
 
 export function SearchPage() {
+  const { openApplyModal, setCurrentJobToApply } = useContext(UserContext);
     
   const [jobs, setJobs] = useState<IJob[]>([])
   const [search, setSearch] = useState<IJobSearch>({})
   const [isSearchClicked, setIsSearchClicked] = useState(false)
-  const { register, handleSubmit } = useForm()
+  const {register, handleSubmit} = useForm() 
 
   useEffect(() => {
     const getJobs = async () => {
@@ -60,16 +65,22 @@ export function SearchPage() {
     setIsSearchClicked(true)
   }
 
+  const openJob = (job:IJob) => {
+    openApplyModal()
+    setCurrentJobToApply(job)
+  }
+
   return (
     <StyledSearchPage>
       <Navbar></Navbar>
+      <ModalApply/>
 
       <StyledMainContent>
         <Title1 color={"var(--color-blue)"}>Busca de vagas</Title1>
         <MenuText>Digite o que você está procurando:</MenuText>
         <StyledSearchForm onSubmit={handleSubmit(submit)}>
-          <input type="text" placeholder="Pesquisar" {...register("position")} />
-          <Button buttonStyle="solid"><Icon iconName="search" color="var(--color-white)"></Icon></Button>
+          <Input type="text" placeholder="Pesquisar" {...register("position")} />
+          <Button buttonStyle="solid" circle={true}><Icon iconName="search" color="var(--color-white)"></Icon></Button>
         </StyledSearchForm>
         {isSearchClicked ? <Label color={"black"}>Resultados de busca para: <Paragraph bold={true}>{search.position}</Paragraph></Label>
         : null}
@@ -78,7 +89,10 @@ export function SearchPage() {
             {jobs.length > 0 ? (
               jobs.map((job) => 
               <div>
-                <li key={job.id}>{job.position}</li>
+                <li key={job.id}>
+                  {job.position}
+                  <button onClick={() => openJob(job)}>abrir job</button>
+                </li>
               </div>) 
             ) : (
               <div>
