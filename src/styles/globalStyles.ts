@@ -19,4 +19,13 @@ export const GlobalStyles = createGlobalStyle`
             padding: 130px 0 220px
         }
     }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 `
