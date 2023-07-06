@@ -14,7 +14,6 @@ export const StyledEditJobForm = styled.form`
         display: flex;
         gap: 45px;
     }
-
     >div>div{
         width: 100%;
         max-width: 639px;
@@ -22,8 +21,13 @@ export const StyledEditJobForm = styled.form`
         flex-direction: column;
         gap: 17px
     }
-
     input, textarea{
         max-width: 639px;
+    }
+
+    @media(max-width: 580px) {
+        >div{
+            flex-direction: column;
+        }
     }
 `

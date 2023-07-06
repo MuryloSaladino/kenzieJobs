@@ -1,7 +1,8 @@
 import { StyledInput } from "./styles";
-import { forwardRef, ForwardedRef, InputHTMLAttributes } from "react";
-import { FieldError } from 'react-hook-form';
 import { BoldAlert } from "../../styles/typography";
+
+import { forwardRef, ForwardedRef, InputHTMLAttributes } from "react";
+import { FieldError } from "react-hook-form";
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
     error?: FieldError | undefined;

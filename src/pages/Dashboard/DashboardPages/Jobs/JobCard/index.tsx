@@ -5,10 +5,8 @@ import { Title3 } from "../../../../../styles/typography";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserDataContext } from "../../../../../providers/UserDataContext";
-
 import { kenzieJobs } from "../../../../../service/api";
 import { toast } from "react-toastify"
-
 
 interface IJobs{
     userId: number,
@@ -17,42 +15,40 @@ interface IJobs{
     sallary: number,
     description: string
 }
-
 interface IJobCardProps{
     element: IJobs;
 }
 
-
 export function JobCard({element}: IJobCardProps) {
 
-    const navigate = useNavigate()
-    const { updateJobs, setCurrentJob } = useContext(UserDataContext)
+    const navigate = useNavigate();
+    const { updateJobs, setCurrentJob } = useContext(UserDataContext);
     
     function handleEdit() {
-        setCurrentJob(element)
-        navigate("/dashboard/edit-jobs")
+        setCurrentJob(element);
+        navigate("/dashboard/edit-jobs");
     }
 
     async function handleDelete() {
-        const token = localStorage.getItem("@TOKEN")
+        const token = localStorage.getItem("@TOKEN");
         const options = {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }
         try {
-            await kenzieJobs.delete(`/jobs/${element.id}`, options)
-            updateJobs()
-            toast.success("Vaga excluída!")
+            await kenzieJobs.delete(`/jobs/${element.id}`, options);
+            updateJobs();
+            toast.success("Vaga excluída!");
         } catch (error) {
-            toast.error("Oops! Parece que algo deu errado")
+            console.error(error);
+            toast.error("Oops! Parece que algo deu errado");
         }
     }
 
     return(
         <StyledJobLi>
             <Title3>{element.position}</Title3>
-
             <div>
                 <Icon 
                     iconName="edit" 

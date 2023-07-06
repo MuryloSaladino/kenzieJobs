@@ -1,8 +1,8 @@
 import { StyledButton } from "./styles";
 
 interface IButtonProps{
-    children: React.ReactNode
-    buttonStyle: 'solid' | 'outline';
+    children: React.ReactNode;
+    buttonStyle: "solid" | "outline";
     handleClick?: () => void;
     circle?: boolean;
 }

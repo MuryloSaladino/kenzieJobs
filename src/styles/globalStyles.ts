@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
         min-height: 100vh;
         padding: 100px 0 120px;
         position: relative;
-        font-family: 'Montserrat', sans-serif;
+        font-family: "Montserrat", sans-serif;
     }
     @media(max-width: 580px) {
         body{

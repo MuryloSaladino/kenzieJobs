@@ -1,7 +1,8 @@
 import { StyledTextarea } from "./styles";
-import { forwardRef, ForwardedRef, InputHTMLAttributes } from "react";
-import { FieldError } from 'react-hook-form';
 import { BoldAlert } from "../../styles/typography";
+
+import { forwardRef, ForwardedRef, InputHTMLAttributes } from "react";
+import { FieldError } from "react-hook-form";
 
 interface ITextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
     error?: FieldError | undefined;

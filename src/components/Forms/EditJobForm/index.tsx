@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TEditJobFormValues, editJobSchema } from "./editJobSchema";
 import { kenzieJobs } from "../../../service/api";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 import { useContext, useEffect } from "react";
 import { UserDataContext } from "../../../providers/UserDataContext";
 import { TextArea } from "../../Textarea";
@@ -14,16 +14,16 @@ import { useNavigate } from "react-router-dom";
 
 export function EditJobForm() {
 
-    const { updateJobs, currentJob } = useContext(UserDataContext)
-    const navigate = useNavigate()
+    const { updateJobs, currentJob } = useContext(UserDataContext);
+    const navigate = useNavigate();
 
     const {register, handleSubmit, formState:{errors}, reset} = useForm<TEditJobFormValues>({
         resolver: zodResolver(editJobSchema)
     })
 
     useEffect(() => {
-        reset({position: currentJob?.position, sallary: currentJob?.sallary.toString(), description: currentJob?.description})
-        currentJob ? null : navigate("/dashboard/jobs")
+        reset({position: currentJob?.position, sallary: currentJob?.sallary.toString(), description: currentJob?.description});
+        currentJob ? null : navigate("/dashboard/jobs");
     }, [])
 
 
@@ -36,13 +36,13 @@ export function EditJobForm() {
                     Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`
                 }
             })
-            toast.success("Vaga editada com sucesso!")
-            reset({position: "", sallary: "", description: ""})
-            updateJobs()
-            navigate("/dashboard/jobs")
+            toast.success("Vaga editada com sucesso!");
+            reset({position: "", sallary: "", description: ""});
+            updateJobs();
+            navigate("/dashboard/jobs");
         } catch (error) {
-            console.error(error)
-            toast.error("Oops! Algo deu errado.")
+            console.error(error);
+            toast.error("Oops! Algo deu errado.");
         }
     }
 
