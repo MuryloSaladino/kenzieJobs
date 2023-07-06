@@ -15,7 +15,7 @@ export const GlobalStyles = createGlobalStyle`
         font-family: "Montserrat", sans-serif;
     }
     @media(max-width: 580px) {
-        body{
+        html > body{
             padding: 130px 0 220px
         }
     }
