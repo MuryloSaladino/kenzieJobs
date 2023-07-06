@@ -64,10 +64,10 @@ export function UserProvider ({children}:IUserProviderProps) {
     }
 
     async function logoutUser() {
-        localStorage.removeItem("TOKEN")
-        localStorage.removeItem("USERID")
+        localStorage.removeItem("@TOKEN")
+        localStorage.removeItem("@USERID")
         setUser(null)
-        navigate("/")
+        navigate("/login")
     }
 
     useEffect(()=>{

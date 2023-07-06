@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
 interface IStyledButtonProps{
-    buttonStyle: 'solid' | 'outline'
+    buttonStyle: 'solid' | 'outline';
+    circle?: boolean;
 }
 
 export const StyledButton = styled.button<IStyledButtonProps>`
-    width: max-content;
+    width: ${({circle}) => circle ? '58px' : 'max-content'};
     height: 58px;
 
     background-color: ${({buttonStyle}) => buttonStyle === 'outline' ? 'transparent' : 'var(--color-blue)'};
-    padding: 18px 36px;
+    padding: ${({circle}) => circle ? 'null' : '18px 36px'};
     border: solid 1px var(--color-blue);
     border-radius: 255px;
 
