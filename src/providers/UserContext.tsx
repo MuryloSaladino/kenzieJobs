@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { kenzieJobs } from "../service/api";
 import { AxiosResponse } from "axios";
@@ -13,6 +13,8 @@ interface IUserContext {
     logoutUser(): Promise<void>;
     currentJobToApply: IJobs | null;
     setCurrentJobToApply: React.Dispatch<React.SetStateAction<IJobs | null>>;
+    openApplyModal(): void;
+    closeApplyModal(): void;
 }
 interface IUserProviderProps {
     children: React.ReactNode;
@@ -47,6 +49,15 @@ export function UserProvider ({children}:IUserProviderProps) {
     const navigate = useNavigate();
     const [user, setUser] = useState<IUser | null>(null);
     const [currentJobToApply, setCurrentJobToApply] = useState<IJobs | null>(null);
+    const modalRef = useRef<HTMLDialogElement>(null)
+
+    function openApplyModal() {
+        modalRef.current?.showModal()
+    }
+    function closeApplyModal() {
+        modalRef.current?.close()
+        setCurrentJobToApply(null)
+    }
 
     async function registerUser (formData:IFormData) {
         try {
@@ -107,7 +118,7 @@ export function UserProvider ({children}:IUserProviderProps) {
     },[])
 
     return (
-        <UserContext.Provider value={{user, setUser, registerUser, loginUser, logoutUser, currentJobToApply, setCurrentJobToApply}}>
+        <UserContext.Provider value={{user, setUser, registerUser, loginUser, logoutUser, currentJobToApply, setCurrentJobToApply, openApplyModal, closeApplyModal}}>
             {children}
         </UserContext.Provider>
     )
