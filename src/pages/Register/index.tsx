@@ -13,8 +13,8 @@ export function Register() {
             <Navbar/>
             <StyledMain>
                 <div>
-                    <Icon iconName="arrow_back" color="var(--color-blue)"/>
                     <Link to="/login">
+                        <Icon iconName="arrow_back" color="var(--color-blue)"/>
                         <Paragraph bold color="var(--color-blue)">voltar</Paragraph>
                     </Link>
                 </div>
