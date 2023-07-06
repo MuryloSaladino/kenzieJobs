@@ -11,6 +11,8 @@ interface IUserContext {
     registerUser(formData: IFormData): Promise<void>;
     loginUser(formData: IFormData): Promise<void>;
     logoutUser(): Promise<void>;
+    currentJobToApply: IJobs | null;
+    setCurrentJobToApply: React.Dispatch<React.SetStateAction<IJobs | null>>;
 }
 interface IUserProviderProps {
     children: React.ReactNode;
@@ -30,6 +32,13 @@ interface IResponse {
     accessToken: string;
     user: IUser;
 }
+interface IJobs{
+    userId: number;
+    id: number;
+    position: string;
+    sallary: number;
+    description: string;
+}
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -37,6 +46,7 @@ export function UserProvider ({children}:IUserProviderProps) {
 
     const navigate = useNavigate();
     const [user, setUser] = useState<IUser | null>(null);
+    const [currentJobToApply, setCurrentJobToApply] = useState<IJobs | null>(null);
 
     async function registerUser (formData:IFormData) {
         try {
@@ -97,7 +107,7 @@ export function UserProvider ({children}:IUserProviderProps) {
     },[])
 
     return (
-        <UserContext.Provider value={{user, setUser, registerUser, loginUser, logoutUser}}>
+        <UserContext.Provider value={{user, setUser, registerUser, loginUser, logoutUser, currentJobToApply, setCurrentJobToApply}}>
             {children}
         </UserContext.Provider>
     )
