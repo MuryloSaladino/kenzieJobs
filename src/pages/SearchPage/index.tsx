@@ -11,7 +11,7 @@ import axios from "axios";
 import { Icon } from "../../components/Icon";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
-import { ApplyForm } from "../../components/ModalApply";
+import { ModalApply } from "../../components/ModalApply";
 
 interface IJob {
   userId: number;
@@ -73,7 +73,7 @@ export function SearchPage() {
   return (
     <StyledSearchPage>
       <Navbar></Navbar>
-      <ApplyForm></ApplyForm>
+      <ModalApply/>
 
       <StyledMainContent>
         <Title1 color={"var(--color-blue)"}>Busca de vagas</Title1>
