@@ -1,10 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const ResetStyles = createGlobalStyle`
-    /* http://meyerweb.com/eric/tools/css/reset/ 
-    v2.0 | 20110126
-    License: none (public domain)
-    */
 
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -26,7 +22,6 @@ export const ResetStyles = createGlobalStyle`
         vertical-align: baseline;
         box-sizing: border-box;
     }
-    /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure, 
     footer, header, hgroup, menu, nav, section {
         display: block;
@@ -52,7 +47,6 @@ export const ResetStyles = createGlobalStyle`
     input, dialog {
         outline: none;
     }
-
     a{
         text-decoration: none;
     }

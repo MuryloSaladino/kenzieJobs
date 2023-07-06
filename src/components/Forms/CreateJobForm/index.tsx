@@ -8,20 +8,20 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TCreateJobFormValues, createJobSchema } from "./createJobSchema";
 import { kenzieJobs } from "../../../service/api";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 import { useContext } from "react";
 import { UserDataContext } from "../../../providers/UserDataContext";
 
 export function CreateJobForm() {
 
-    const { updateJobs } = useContext(UserDataContext)
+    const { updateJobs } = useContext(UserDataContext);
 
     const {register, handleSubmit, formState:{errors}, reset} = useForm<TCreateJobFormValues>({
         resolver: zodResolver(createJobSchema)
     })
 
     const createJobForm:SubmitHandler<TCreateJobFormValues> = async (formData) => {
-        const newJob = {userId: localStorage.getItem("@USERID"), ...formData}
+        const newJob = {userId: localStorage.getItem("@USERID"), ...formData};
 
         try {
             await kenzieJobs.post("/jobs", newJob, {
@@ -29,12 +29,12 @@ export function CreateJobForm() {
                     Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`
                 }
             })
-            toast.success("Vaga criada com sucesso!")
-            reset({position: "", sallary: "", description: ""})
-            updateJobs()
+            toast.success("Vaga criada com sucesso!");
+            reset({position: "", sallary: "", description: ""});
+            updateJobs();
         } catch (error) {
-            console.error(error)
-            toast.error("Oops! Algo deu errado.")
+            console.error(error);
+            toast.error("Oops! Algo deu errado.");
         }
     }
 

@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import { Icon } from "../../../../../components/Icon";
-import { Paragraph, Title3 } from "../../../../../styles/typography";
 import { StyledApplyLi } from "./styles";
-import { UserDataContext } from "../../../../../providers/UserDataContext";
+import { Paragraph, Title3 } from "../../../../../styles/typography";
+import { Icon } from "../../../../../components/Icon";
 
+import { useContext, useState } from "react";
+import { UserDataContext } from "../../../../../providers/UserDataContext";
 import { v4 as uuidv4 } from "uuid";
 
 interface IApplyCardProps{
@@ -21,13 +21,12 @@ interface IApplies{
 
 export function ApplyCard({element}: IApplyCardProps) {
 
-    const { jobs } = useContext(UserDataContext)
-
-    const [open, setOpen] = useState<boolean>(false)
-    const jobName = jobs.find(job => job.id === element.jobId)?.position
+    const [open, setOpen] = useState<boolean>(false);
+    const { jobs } = useContext(UserDataContext);
+    const jobName = jobs.find(job => job.id === element.jobId)?.position;
 
     function switchOpen() {
-        open ? setOpen(false) : setOpen(true) 
+        open ? setOpen(false) : setOpen(true);
     }
 
     return(

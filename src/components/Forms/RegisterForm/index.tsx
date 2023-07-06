@@ -1,16 +1,17 @@
-import { SubmitHandler ,useForm } from "react-hook-form";
 import { StyledForm } from "./style";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { TRegisterFormValues, registerSchema } from "./registerSchema";
-import { useContext } from "react";
-import { UserContext } from "../../../providers/UserContext";
 import { Input } from "../../Input/index";
 import { Button } from "../../Button";
 import { Title1 } from "../../../styles/typography";
 
+import { SubmitHandler ,useForm } from "react-hook-form";
+import { TRegisterFormValues, registerSchema } from "./registerSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
+import { UserContext } from "../../../providers/UserContext";
+
 export function RegisterForm() {
 
-    const {registerUser} = useContext(UserContext)
+    const {registerUser} = useContext(UserContext);
 
     const {register, handleSubmit, formState:{errors}} = useForm<TRegisterFormValues>({
         resolver:zodResolver(registerSchema)
@@ -22,7 +23,7 @@ export function RegisterForm() {
             email:formData.email,
             password:formData.password
         }
-        registerUser(newFormdata)
+        registerUser(newFormdata);
     }
 
     return ( 

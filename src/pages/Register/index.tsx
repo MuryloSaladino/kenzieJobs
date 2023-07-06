@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
-import { RegisterForm } from "../../components/Forms/RegisterForm";
-import { Footer } from "../../components/Footer/index";
-import { Navbar } from "../../components/Navbar/index";
 import { StyledMain } from "./styles";
-import { Paragraph } from "../../styles/typography";
+import { RegisterForm } from "../../components/Forms/RegisterForm";
+import { Navbar } from "../../components/Navbar/index";
+import { Footer } from "../../components/Footer/index";
 import { Icon } from "../../components/Icon";
+import { Paragraph } from "../../styles/typography";
+
+import { Link } from "react-router-dom";
 
 export function Register() {
     return(
@@ -12,10 +13,13 @@ export function Register() {
             <Navbar/>
             <StyledMain>
                 <div>
-                    <Icon iconName="arrow_back" color="var(--color-blue)"></Icon><Link to={"/login"}><Paragraph bold color={"var(--color-blue)" }>voltar</Paragraph></Link>
+                    <Icon iconName="arrow_back" color="var(--color-blue)"/>
+                    <Link to="/login">
+                        <Paragraph bold color="var(--color-blue)">voltar</Paragraph>
+                    </Link>
                 </div>
                 <section>
-                    <RegisterForm />
+                    <RegisterForm/>
                 </section>
             </StyledMain>
             <Footer/>
