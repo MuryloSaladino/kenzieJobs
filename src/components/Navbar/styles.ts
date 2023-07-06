@@ -25,7 +25,8 @@ export const StyledNav = styled.nav`
     img{
         position: absolute;
         left: 0;
-        top: center;
+        top: 50%;
+        transform: translate(0, -50%);
     }
 
     @media(max-width: 580px) {
