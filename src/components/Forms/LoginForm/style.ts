@@ -5,6 +5,7 @@ export const StyledForm = styled.form`
     flex-direction: column;
     gap: 20px;
 
+    max-width:518px;
     width:518px;
 
     h3 {

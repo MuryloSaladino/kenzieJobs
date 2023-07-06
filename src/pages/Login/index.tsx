@@ -17,7 +17,7 @@ export function Login() {
                 <div>
                     <LoginForm/>
                     <Label color="var(--color-black)">
-                        Não possui cadastro? <Link to="/register"><Label>Cadastre-se</Label></Link>
+                        Não possui cadastro? <Link to="/register">Cadastre-se</Link>
                     </Label>
                 </div>
             </StyledMain>

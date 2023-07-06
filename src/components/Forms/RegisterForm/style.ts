@@ -4,10 +4,10 @@ export const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
     gap: 17px;
-    width: 518px;
+    max-width: 518px;
+    width: 98%;
 
     margin: 130px auto 0;
-
     h1 {
         text-align: center;
     }
