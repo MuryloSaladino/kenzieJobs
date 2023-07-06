@@ -12,7 +12,7 @@ import { kenzieJobs } from "../../service/api";
 import { toast } from "react-toastify"
 import { Icon } from "../Icon";
 
-export function ApplyForm() {
+export function ModalApply() {
 
     const {currentJobToApply, closeApplyModal} = useContext(UserContext)
     const [companyName, setCompanyName] = useState("")
