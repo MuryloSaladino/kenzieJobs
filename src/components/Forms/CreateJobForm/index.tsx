@@ -22,7 +22,6 @@ export function CreateJobForm() {
 
     const createJobForm:SubmitHandler<TCreateJobFormValues> = async (formData) => {
         const newJob = {userId: localStorage.getItem("@USERID"), ...formData};
-
         try {
             await kenzieJobs.post("/jobs", newJob, {
                 headers: {

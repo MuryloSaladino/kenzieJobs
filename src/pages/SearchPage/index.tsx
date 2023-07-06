@@ -26,6 +26,7 @@ interface IFormdata {
 }
 
 export function SearchPage() {
+    
   const [jobs, setJobs] = useState<IJob[]>([])
   const [search, setSearch] = useState<IJobSearch>({})
   const [isSearchClicked, setIsSearchClicked] = useState(false)
@@ -70,7 +71,7 @@ export function SearchPage() {
           <input type="text" placeholder="Pesquisar" {...register("position")} />
           <Button buttonStyle="solid"><Icon iconName="search" color="var(--color-white)"></Icon></Button>
         </StyledSearchForm>
-        {isSearchClicked ? <Label color={"black"}>Resultados de busca para: <Paragraph bold={"700"}>{search.position}</Paragraph></Label>
+        {isSearchClicked ? <Label color={"black"}>Resultados de busca para: <Paragraph bold={true}>{search.position}</Paragraph></Label>
         : null}
         {isSearchClicked && (
           <ul>
