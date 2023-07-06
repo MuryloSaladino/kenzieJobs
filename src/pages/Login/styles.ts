@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledMain =styled.main`
     max-width: 1328px;
+    width: 98%;
     margin: 60px auto 120px;
 
     display: flex;
@@ -19,6 +20,30 @@ export const StyledMain =styled.main`
             a {
                 color: var(--color-blue);
             }
+        }
+    }
+
+    @media (max-width: 1240px) {
+
+        img {
+            display: none;
+        }
+
+        >div {
+
+            width:100%;
+        }
+
+        form {
+            margin:0 auto;
+            width: 100%;
+        }
+    }
+
+    @media(max-width: 580px) {
+        
+        >div {
+            padding-inline: 12px;
         }
     }
 `
