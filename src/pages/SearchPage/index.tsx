@@ -9,12 +9,15 @@ import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import axios from "axios";
 import { Icon } from "../../components/Icon";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
+import { ApplyForm } from "../../components/ModalApply";
 
 interface IJob {
   userId: number;
   id: number;
   position: string;
-  salary: number;
+  sallary: number;
   description: string;
 }
 
@@ -27,6 +30,7 @@ interface IFormdata {
 }
 
 export function SearchPage() {
+  const { openApplyModal, setCurrentJobToApply } = useContext(UserContext);
     
   const [jobs, setJobs] = useState<IJob[]>([])
   const [search, setSearch] = useState<IJobSearch>({})
@@ -61,9 +65,15 @@ export function SearchPage() {
     setIsSearchClicked(true)
   }
 
+  const openJob = (job:IJob) => {
+    openApplyModal()
+    setCurrentJobToApply(job)
+  }
+
   return (
     <StyledSearchPage>
       <Navbar></Navbar>
+      <ApplyForm></ApplyForm>
 
       <StyledMainContent>
         <Title1 color={"var(--color-blue)"}>Busca de vagas</Title1>
@@ -79,7 +89,10 @@ export function SearchPage() {
             {jobs.length > 0 ? (
               jobs.map((job) => 
               <div>
-                <li key={job.id}>{job.position}</li>
+                <li key={job.id}>
+                  {job.position}
+                  <button onClick={() => openJob(job)}>abrir job</button>
+                </li>
               </div>) 
             ) : (
               <div>
