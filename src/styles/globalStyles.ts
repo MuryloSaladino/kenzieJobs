@@ -8,7 +8,7 @@ export const GlobalStyles = createGlobalStyle`
         --color-blue:#8490FF;
     }
 
-    body{
+    html > body{
         min-height: 100vh;
         padding: 100px 0 120px;
         position: relative;
