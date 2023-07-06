@@ -27,6 +27,7 @@ interface IFormdata {
 }
 
 export function SearchPage() {
+    
   const [jobs, setJobs] = useState<IJob[]>([])
   const [search, setSearch] = useState<IJobSearch>({})
   const [isSearchClicked, setIsSearchClicked] = useState(false)
