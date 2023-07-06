@@ -1,43 +1,59 @@
 import styled from "styled-components";
 
-export const SloganDiv = styled.div`
+export const StyledSection1 = styled.section`
+    width: 100%;
     background: var(--color-blue);
+    padding: 100px 0;
+    div{
+        width: 98%;
+        max-width: 1328px;
+        margin: auto;
+    }
+    @media(max-width: 580px){
+        padding: 70px 25px;
+    }
+`
+
+export const StyledSection2 = styled.section`
+    width: 98%;
+    max-width: 1328px;
+    margin: 90px auto;
+
     display: flex;
-    height: 253px;
     align-items: center;
-    padding: 0px 20px;
-    justify-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 75px;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+    p{
+        max-width: 500px;
+    }
+    img{
+        max-width: 100%;
+    }
 `
 
-export const H2Slogan = styled.h2`
-    font-weight: 700;
-    font-size: 44px;
-    line-height: 53.64px;
-    color: var(--color-white);
-    width: 60%;
+export const StyledSection3 = styled.section`
+    height: max-content;
+    width: 98%;
+    max-width: 1328px;
+    margin: 112px auto;
+
+    h1{
+        margin: 0 auto;
+    }
 `
 
-export const AboutJobsDiv = styled.div`
-    margin: 50px 20px;
-    display: flex;
-    gap: 30px;
-    flex-direction: column;
-`
+export const StyledHomeUl = styled.ul`
+   width: 100%;
 
-export const AboutH2 = styled.h2`
-    font-weight: 700;
-    font-size: 44px;
-    line-height: 53.64px;
-    color: var(--color-blue);
-`
-
-export const AboutUs = styled.p`
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 36px;
-`
-
-export const SectionVacancies = styled.section`
-    margin: 0px 50px;
-    text-align: center;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
 `

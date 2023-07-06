@@ -6,7 +6,6 @@ interface IStyledHomeCardJobLiProps{
 
 export const StyledHomeCardJobLi = styled.li<IStyledHomeCardJobLiProps>`
     width: 100%;
-    min-height: 60px;
     padding: 10px 100px;
 
     display: flex;
@@ -41,5 +40,12 @@ export const StyledHomeCardJobLi = styled.li<IStyledHomeCardJobLiProps>`
         display: flex;
         flex-direction: column;
         gap: 10px;
+    }
+
+    @media(max-width: 580px){
+        padding: 0 0 0 50px;
+        button{
+            position: static;
+        }
     }
 `

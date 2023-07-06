@@ -1,37 +1,43 @@
-<<<<<<< HEAD
 import { Navbar } from "../../components/Navbar";
-import image from "../../assets/Rectangle 3.png"
-import { AboutH2, AboutJobsDiv, AboutUs, H2Slogan, SectionVacancies, SloganDiv } from "./styles";
-=======
 import { Footer } from "../../components/Footer";
-import { Navbar } from "../../components/Navbar";
->>>>>>> b82004624861181beff0304fe1c2aaaa019e44fe
+import { StyledHomeUl, StyledSection1, StyledSection2, StyledSection3 } from "./styles";
+import { Paragraph, Title1 } from "../../styles/typography";
+import homeImage from "../../assets/homePhoto.svg";
+import { useContext } from "react";
+import { HomeContext } from "../../providers/HomeContext";
+import { HomeJobCard } from "../../components/HomeJobCard";
+import { v4 as uuidv4 } from "uuid";
+import { ModalApply } from "../../components/ModalApply";
 
 export function Home() {
+
+    const {allJobs} = useContext(HomeContext)
     
     return(
         <>
+            <ModalApply/>
             <Navbar/>
-<<<<<<< HEAD
-            <section>
-            <SloganDiv>
-                <H2Slogan>Trabalho é na Jobs</H2Slogan>
-            </SloganDiv>
-            <AboutJobsDiv>
-                <AboutH2>Sobre a Jobs</AboutH2>
-                <AboutUs>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, optio voluptate! Itaque fugit accusamus iure reiciendis quasi, odio molestiae eaque, nisi nihil et minus a voluptates. Dicta unde incidunt ratione.</AboutUs>
-                <figure>
-                    <img src={image} alt="Imagem ilustrativa" style={{width: "100%"}}/>
-                </figure>
-            </AboutJobsDiv>
-            </section>
-            <SectionVacancies>
-                <AboutH2>Confira nossas vagas</AboutH2>
-            </SectionVacancies>
-=======
-            aqui é a home
+            <StyledSection1>
+                <div>
+                    <Title1 color="var(--color-white)">Trabalho é na jobs</Title1>
+                </div>
+            </StyledSection1>
+            <StyledSection2>
+                <div>
+                    <Title1 color="var(--color-blue)">Sobre a jobs</Title1>
+                    <Paragraph>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis orci nec felis varius pretium. Nam eu diam erat. Sed libero ante, finibus id nunc suscipit, sagittis sagittis sem. Nam accumsan, turpis sed consequat tincidunt, nibh odio tincidunt nunc, aliquet sodales sem tortor sed lectus.
+                    </Paragraph>
+                </div>
+                <img src={homeImage}/>
+            </StyledSection2>
+            <StyledSection3>
+                <Title1 color="var(--color-blue)">Confira nossa vagas</Title1>
+                <StyledHomeUl>
+                    {allJobs.map(job => <HomeJobCard job={job} key={uuidv4()}/>)}
+                </StyledHomeUl>
+            </StyledSection3>
             <Footer/>
->>>>>>> b82004624861181beff0304fe1c2aaaa019e44fe
         </>
     )
 }
