@@ -34,6 +34,15 @@ export const StyledModalDiv = styled.div`
         right: 14px;
         font-size: 2rem;
     }
+
+    @media(max-width: 580px){
+        padding: 15px 15px 25px;
+        i{
+            top: 3px;
+            right: 3px;
+            font-size: 2rem;
+        }
+    }
 `
 
 export const StyledApplyForm = styled.form`

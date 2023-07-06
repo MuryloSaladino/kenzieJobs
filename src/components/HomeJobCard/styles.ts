@@ -35,7 +35,7 @@ export const StyledHomeCardJobLi = styled.li<IStyledHomeCardJobLiProps>`
     }
     >div{
         width: 80%;
-        height: 60px;
+        min-height: 60px;
 
         display: flex;
         flex-direction: column;
@@ -43,6 +43,7 @@ export const StyledHomeCardJobLi = styled.li<IStyledHomeCardJobLiProps>`
     }
 
     @media(max-width: 580px){
+        gap: 20px;
         padding: 0 0 0 50px;
         button{
             position: static;
