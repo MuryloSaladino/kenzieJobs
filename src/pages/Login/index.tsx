@@ -1,19 +1,27 @@
-import { Link } from "react-router-dom";
+import { StyledMain } from "./styles";
 import { LoginForm } from "../../components/Forms/LoginForm";
+import { Navbar } from "../../components/Navbar/index";
+import { Footer } from "../../components/Footer/index";
+import { Label } from "../../styles/typography";
+import loginImage from "../../assets/loginImage.svg";
+
+import { Link } from "react-router-dom";
 
 export function Login() {
 
     return(
         <>
-            <header>header</header>
-            <main>
-                <img src="" alt="" />
-
-                <LoginForm/>
-
-                <span>Não possui cadastro? <Link to={"/register"} >Cadastre-se</Link></span>
-            </main>
-            <footer>footer</footer>
+            <Navbar/>
+            <StyledMain>
+                <img src={loginImage}/>
+                <div>
+                    <LoginForm/>
+                    <Label color="var(--color-black)">
+                        Não possui cadastro? <Link to="/register"><Label>Cadastre-se</Label></Link>
+                    </Label>
+                </div>
+            </StyledMain>
+            <Footer/>
         </>
     )
 }

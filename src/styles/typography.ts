@@ -2,19 +2,27 @@ import styled from "styled-components";
 
 interface ITypographyProps{
     color?: string;
-    bold?: string;
+    bold?: boolean;
 }
 
 export const Title1 = styled.h1<ITypographyProps>`
     font-size: 4rem;
     font-weight: 700;
     color: ${({color}) => color ? color : "var(--color-black)"};
+
+    @media(max-width: 580px) {
+        font-size: 2.75rem;
+    }
 `
 
 export const Title2 = styled.h2<ITypographyProps>`
     font-size: 2.75rem;
     font-weight: 700;
     color: ${({color}) => color ? color : "var(--color-black)"};
+
+    @media(max-width: 580px) {
+        font-size: 2rem;
+    }
 `
 
 export const Title3 = styled.h3<ITypographyProps>`

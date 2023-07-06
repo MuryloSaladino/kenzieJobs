@@ -1,14 +1,18 @@
 import { StyledInput } from "./styles";
-import { UseFormRegisterReturn } from "react-hook-form";
+import { BoldAlert } from "../../styles/typography";
 
-interface IInputProps{
-    placeholder: string;
-    type?: string;
-    register: UseFormRegisterReturn<string>;
+import { forwardRef, ForwardedRef, InputHTMLAttributes } from "react";
+import { FieldError } from "react-hook-form";
+
+interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
+    error?: FieldError | undefined;
 }
 
-export function Input({placeholder, type, register}:IInputProps) {
+export const Input = forwardRef(({error, ...rest}:IInputProps, ref: ForwardedRef<HTMLInputElement>) => {
     return(
-        <StyledInput type={type} placeholder={placeholder} {...register} />
+    <>
+        <StyledInput ref={ref} {...rest} />
+        {error ? <BoldAlert color="red">{error.message}</BoldAlert>: null}
+    </>
     )
-}
+})

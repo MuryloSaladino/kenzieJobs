@@ -5,25 +5,29 @@ import { StyledDashboardNavbarDiv } from "./styles";
 
 export function DashboardNavbar() {
 
-    const [pageSelected, setPageSelected] = useState<"applies" | "jobs" | null>(null)
+    const [pageSelected, setPageSelected] = useState<"applies" | "jobs" | null>(null);
 
     useEffect(() => {
         function checkLocation() {
-            const url = window.location.href
+            const url = window.location.href;
             if(url.includes("applies")) {
-                setPageSelected("applies")
+                setPageSelected("applies");
             }else if(url.includes("jobs")){
-                setPageSelected("jobs")
+                setPageSelected("jobs");
             }
         }
-        checkLocation()
+        checkLocation();
     }, [])
 
     return(
         <>
             <StyledDashboardNavbarDiv>
-                <MenuText color={pageSelected === "applies" ? "var(--color-blue)" : "var(--color-black)"} ><Link to="/dashboard/applies">Minhas vagas</Link></MenuText>
-                <MenuText color={pageSelected === "jobs" ? "var(--color-blue)" : "var(--color-black)"} ><Link to="/dashboard/jobs">Minhas candidaturas</Link></MenuText>
+                <Link to="/dashboard/jobs">
+                    <MenuText color={pageSelected === "jobs" ? "var(--color-blue)" : "var(--color-black)"}>Minhas vagas</MenuText>
+                </Link>
+                <Link to="/dashboard/applies">
+                    <MenuText color={pageSelected === "applies" ? "var(--color-blue)" : "var(--color-black)"}>Minhas candidaturas</MenuText>
+                </Link>
             </StyledDashboardNavbarDiv>
         </>
     )
